@@ -21,6 +21,7 @@ public class SphinxSpeechRecognizer {
     Thread resourcesThread;
 
     private boolean liveRec = false;
+    private boolean useLangModel = false;
 
     private static final String ACOUSTIC_MODEL_PATH = "resource:/edu/cmu/sphinx/models/en-us/en-us";
     private static final String ACOUSTIC_MODEL_PATHru = "rus/ru"; //
@@ -44,12 +45,14 @@ public class SphinxSpeechRecognizer {
         // Load model from the jar
         configuration.setAcousticModelPath(ACOUSTIC_MODEL_PATH);
         configuration.setDictionaryPath(DICTIONARY_PATH);
-        //configuration.setLanguageModelPath(LANGMODEL_PATH);
 
-        // Grammar
-        configuration.setGrammarPath(GRAMMAR_PATH);
-        configuration.setGrammarName(GRAMMAR);
-        configuration.setUseGrammar(true);
+        if(useLangModel)
+            configuration.setLanguageModelPath(LANGMODEL_PATH);
+        else{
+            configuration.setGrammarPath(GRAMMAR_PATH);
+            configuration.setGrammarName(GRAMMAR);
+            configuration.setUseGrammar(true);
+        }
 
 
         if(liveRec){
