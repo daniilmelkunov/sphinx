@@ -1,0 +1,11 @@
+#JSGF V1.0;
+
+/**
+ * JSGF Grammar
+ */
+
+grammar grammar;
+
+public <words> = ( cat | love | cookies | hello | my | friend | how | are | you );
+public <phrases>  = ( cat love cookies | hello my friend how are you );
+
